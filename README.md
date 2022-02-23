@@ -1,7 +1,7 @@
 # VisuArbo
 
 # Etape 1 : 
-Déziper le .zip sous un folder VisuArbo de votre choix.
+Déziper le .zip sous un folder VisuArbo.
 
 # Etape 2 : 
 Créer le fichier json contenant le path dont on veut visualiser l'arborescence et le mettre sous le répertoire VisuArbo. Pour cela,, lancer sous le répertoire VisuArbo la commande : python3 folder_to_json.py ./Arbo_a_visualiser > VisuArbo.json
