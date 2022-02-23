@@ -148,7 +148,7 @@
                                         label: d => d.name,
                                         title: (d, n) => `${n.ancestors().reverse().map(d => d.data.name).join(".")}`, // hover text
                                         link: (d, n) => 
-                                        `Arbo_a_visualiser${n.ancestors().reverse().map(d => d.data.name).join("/")}`
+                                        `${n.ancestors().reverse().map(d => d.data.name).join("/")}`
                                             //n.children
                                            // ? `${n.ancestors().reverse().map(d => d.data.name).join("/")}`
                                             //: `${n.ancestors().reverse().map(d => d.data.name).join("/")}.as`

@@ -15,10 +15,6 @@
             "type": "directory",
             "children": [
                 {
-                    "name": "VisuArbo.zip",
-                    "type": "file"
-                },
-                {
                     "name": "folder_to_json_prof.py",
                     "type": "file"
                 },
@@ -31,19 +27,15 @@
                             "type": "file"
                         },
                         {
-                            "name": "favicon.ico",
-                            "type": "file"
-                        },
-                        {
                             "name": "fonts",
                             "type": "directory",
                             "children": [
                                 {
-                                    "name": "DinoTopia-Thin.ttf",
+                                    "name": "DinoTopia.ttf",
                                     "type": "file"
                                 },
                                 {
-                                    "name": "DinoTopia.ttf",
+                                    "name": "1-map-palette2.jpeg",
                                     "type": "file"
                                 },
                                 {
@@ -79,19 +71,19 @@
                             "type": "directory",
                             "children": [
                                 {
-                                    "name": "bootstrap.bundle.min.js",
+                                    "name": "fake3",
                                     "type": "file"
                                 },
                                 {
-                                    "name": "bootstrap.bundle.min.js.map",
+                                    "name": "fake2",
                                     "type": "file"
                                 },
                                 {
-                                    "name": "config.js",
+                                    "name": "nous_irons_aux_bois",
                                     "type": "file"
                                 },
                                 {
-                                    "name": "d3.min.js",
+                                    "name": "fake1",
                                     "type": "file"
                                 }
                             ]
@@ -118,7 +110,7 @@
                             "type": "directory",
                             "children": [
                                 {
-                                    "name": "bg.jpg",
+                                    "name": "1-map-palette2.jpeg",
                                     "type": "file"
                                 }
                             ]
@@ -140,10 +132,6 @@
             "type": "directory",
             "children": [
                 {
-                    "name": "0-prez.odp",
-                    "type": "file"
-                },
-                {
                     "name": "4-sondage-palette2.jpeg",
                     "type": "file"
                 },
@@ -161,10 +149,6 @@
                 },
                 {
                     "name": "2-camembert-palette1.jpeg",
-                    "type": "file"
-                },
-                {
-                    "name": "photo-hors-sujet.jpg",
                     "type": "file"
                 },
                 {
@@ -234,10 +218,6 @@
                             "type": "directory",
                             "children": [
                                 {
-                                    "name": "DinoTopia-Thin.ttf",
-                                    "type": "file"
-                                },
-                                {
                                     "name": "DinoTopia.ttf",
                                     "type": "file"
                                 },
@@ -264,10 +244,6 @@
                                     "type": "file"
                                 },
                                 {
-                                    "name": "bootstrap.min.css.map",
-                                    "type": "file"
-                                },
-                                {
                                     "name": "style.css",
                                     "type": "file"
                                 }
@@ -282,15 +258,7 @@
                                     "type": "file"
                                 },
                                 {
-                                    "name": "bootstrap.bundle.min.js.map",
-                                    "type": "file"
-                                },
-                                {
                                     "name": "config.js",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "d3.min.js",
                                     "type": "file"
                                 }
                             ]
@@ -382,7 +350,7 @@
                             "type": "directory",
                             "children": [
                                 {
-                                    "name": "bg.jpg",
+                                    "name": "5-ouinon-palette2.jpeg",
                                     "type": "file"
                                 }
                             ]
@@ -400,14 +368,6 @@
                                     "type": "file"
                                 },
                                 {
-                                    "name": "vizabi.js",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "d3.js",
-                                    "type": "file"
-                                },
-                                {
                                     "name": "linechart.css.map",
                                     "type": "file"
                                 },
@@ -416,19 +376,7 @@
                                     "type": "file"
                                 },
                                 {
-                                    "name": "vizabi-ddfcsv-reader-polyfill.js",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "vizabi.zip",
-                                    "type": "file"
-                                },
-                                {
                                     "name": "linechart.min.js",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "vizabi.css",
                                     "type": "file"
                                 },
                                 {
@@ -514,27 +462,7 @@
                                     ]
                                 },
                                 {
-                                    "name": "vizabi-excel-reader.js",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "linechart.zip",
-                                    "type": "file"
-                                },
-                                {
                                     "name": "linechart.js",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "vizabi.css.map",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "vizabi-ddfcsv-reader.js",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "vizabi.min.js",
                                     "type": "file"
                                 }
                             ]
@@ -573,10 +501,6 @@
                                 },
                                 {
                                     "name": "Data1.csv",
-                                    "type": "file"
-                                },
-                                {
-                                    "name": "data.json",
                                     "type": "file"
                                 },
                                 {
