@@ -1,0 +1,40 @@
+html
+{ height: 80%;}
+
+*
+{ margin: 10;
+  padding: 10;}
+
+body
+{ font: normal 100% 'cambria', 'cambria', 'cambria';
+  background: #bac4e4;
+  color: #5D5D5D;}
+
+  h1, h2, h3, h4, h5, h6 
+  { font: normal 200% 'cambria', 'cambria', 'cambria';
+    color: #34588f;
+    margin: 10px 10px 15px 0;
+    padding: 15px 0 5px 0;}
+
+table
+{ margin: 10px 0 30px 0;}
+
+table tr, table tr td
+{ background: #318288;
+  color: rgba(255, 255, 255, 0.925);
+  padding: 7px 4px;
+  text-align: left;}
+  
+table tr td
+{ background: #f6fcfc;
+  color: #817b75;
+  border-top: 1px solid #FFF;}
+span.important{
+   color: purple; 
+   font-weight: bold;
+   }
+table th{
+  background: #318288;
+  color: rgba(255, 255, 255, 0.925);
+  padding: 7px 4px;
+  text-align: center;}

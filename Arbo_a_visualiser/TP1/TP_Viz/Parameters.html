@@ -1,0 +1,264 @@
+<html>
+
+<head>
+    <title>Wellness in the World</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/happiness.css" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/d3.min.js"></script>
+</head>
+
+<body class="bg" style="margin-left: 2%; margin-right: 2%;">
+    <header class="navbar navbar-expand-md navbar-dark bg-black">
+        <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main Navigation">
+            <a class="navbar-brand"
+                style="font-size:50px; color:lightpink; font-family:'Peachy Mochi'; text-shadow: 1px 1px 2px rgb(241, 166, 166), 0 0 1em blue, 0 0 0.2em blue;"
+                href="/">[ Wellness in the world ! ]</a>
+        </nav>
+    </header>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Happiness parameters</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="world_map.html">World Map</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="LinesGraph.html">Line chart representation of the
+                score's evolution</a>
+        </li>
+    </ul>
+    <h3 class="card-header text-light">
+        What makes people happy ?
+    </h3>
+    <div id="graph"></div>
+    <h2 class="text-warning">Details</h2>
+    <p class="text-light">
+        The dataset contains for each country, a global happiness score. This score is the simple sum of 6 sub-scores,
+        each ones corresponding the score reached by a parameter P.
+        6 parameters have been taken in account. Selection of these 6 parameters has been done by the dataset's author,
+        following to further studies which have
+        been proved that the considered selection is the most pertinent selection.
+        Indeed impact of all others parameters  has been showned as almost null. </br>
+
+        The following svg shows bubbles drawn with 3 levels.
+        Assume that level 3 is the level where bubble contains no one else, level 2 bubbles contains 1st level bubbles,
+        level 3 bubbles
+        contains 2nd level bubbles. </p>
+    <p class="text-light">
+        <u>Level 3 bubbles : </br></u>
+        They represents, for each country, for a given parameter P, ratio of P's score to the happiness global score for the country. </br>
+        Dataset's author         has pre selected 6 parameters for his study.
+        Indeed further pre-studies have shown that such selection is the most pertinent, regarding to an other hundred
+        parameters (no notable impact of other parameter on the global happiness score).
+        These 6 parameters are : social support, health, economy, generosity, freedom, and trust. More details available
+         <a href="https://happiness-report.s3.amazonaws.com/2021/Appendix1WHR2021C2.pdf">here</a>.
+        Total of 3 level bubbles are 6 x nb of analysed country. More the ratio of P is high, more diameter of a bubble
+        is large.
+        The color of the bubble is gradiently set. For a given country/3rd level bubble, the color gives the absolute
+        score for the parameter P
+    </p>
+    <p class="text-light">
+        <u>Level 2 bubbles : </br></u>
+        Every 1st level bubbles are grouped by region. The europa bubble contains the 3rd level bubbles related
+        to an european country. Let consider a fixed region R, and a paremeter P.
+        Diameter of a 2nd level bubble is calculated on the basis of the sum of every 3rd level bubbles diameters,
+        related to the countries belonging to the region R.
+        Consequently, more the countries have a ratio of parameter P high, more the region R bubble will be large.
+        To balance the weight of a region R - containing a given number of countries - with other regions containing a
+         number of countries higher or lower,
+        we have divided each diameter - of 3rd level of a given country belonging to the a region R - by the total
+        number of countries belonging to
+        this region R. Under this way, every region has the same weight independently to the number of countries
+        existing in a region. Therefore no one region is disadvantaged or over addvantaged because of number of
+        countries composing it.
+    </p>
+    <p class="text-light">
+        <u>Level 1 bubbles : </br></u>
+        Each one represents the fixed parameter P that has been used for analysis at the 1st level bubbles.
+        Total of 1st level bubble is so 6. Each bubble related to a given parameter P contains finally every of 10
+        region analysed, and so every analysed world country.
+        Finally diameter of 1st level bubble is the result of sum - for every country - of ratio of a given parameter P).
+        Consequently, more a level 1 bubble is large, more the parameter P is preponderant in the hapinness assessment.
+        By a comparison of size of 1st level bubbles,  the question "what makes the happiness ?  has an answer. Here
+        "Social support" first makes the happiness. Then, "Economy", then "Health"...
+    </p>
+    <p class="text-light">
+        Inside a given 1st level bubble of a parameter P, we can see how much the parameter P is important for a given
+        region, and compare with other parameters. </br>
+        Inside a given 2nd level bubble of a region R / parameter P, we can see how much for a given country P makes the
+        happiness, and compare with other regions for P.</br>
+        Regarding the color of a given 3rd level bubble of a countr C, we can see how much parameter P has reached a
+        high score, and compare with other countries of the region R for P.</br>
+        </hr>
+    </p>
+    <table >
+        <caption style="caption-side:bottom">Tableau de MacKinley</caption>
+        <thead>
+            <th>
+                Variable
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Display
+            </th>           
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Ratio of a parameter P to the global happiness score for a given country
+                </td>
+                <td>
+                    Quantitative
+                </td>
+                <td>
+                    Area surface (size)
+                </td>                
+            </tr>
+            <tr>
+                <td>
+                    Name of parameter P
+                </td>
+                <td>
+                    Nominative
+                </td>   
+                <td>
+                    Hue
+                </td>  
+            </tr>                 
+                <tr>                
+                <td>
+                    Absolute score of P in a given country
+                </td>
+                <td>
+                    Quantitative
+                </td>
+                <td>
+                    Color saturation (linear color scale)
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const body = d3.select('div#graph');
+
+        color = d3.scaleLinear()
+            .domain([0, 2])
+            .range(["hsl(400,80%,80%)", "hsl(60,80%,80%)"])
+            .interpolate(d3.interpolateHcl);
+
+        color2 = d3.scaleLinear()
+            .domain([0, 50])
+            .range(["hsl(300,80%,80%)", "hsl(800,30%,40%)"])
+            .interpolate(d3.interpolateHcl);
+
+        format = d3.format(",d");
+        width = 500;
+        height = 500;
+        pack = data => d3.pack()
+            .size([width, height])
+            .padding(3)(d3.hierarchy(data)
+                .sum(d => (!d.children ? d.value[0] : 0))
+                .sort((a, b) => b.value - a.value));
+
+        datas = d3.json("/data/data.json", function (data) {
+            return data;
+        });
+
+        svg = datas.then(function (data) {
+            const root = pack(data);
+            let focus = root;
+            let view;
+
+            const svg = d3.create("svg")
+                .attr("viewBox", `-${width / 2} -${height / 2} ${width} ${height}`)
+                .style("display", "block")
+                .style("margin", "0 -14px")
+                //  .style("background", color(0))
+                .style("cursor", "pointer")
+                .on("click", (event) => zoom(event, root));
+
+            const node = svg.append("g")
+                .selectAll("circle")
+                .data(root.descendants().slice(1))
+                .join("circle")
+                .attr("fill", d => d.children ? ((d.parent === root) ? stringToColour(d.data.name, d) : color(d.depth)) : color2(d.data.value[1] * 10))
+                .attr("pointer-events", d => !d.children ? "none" : null)
+                .on("mouseover", function () { d3.select(this).attr("stroke", "#000"); })
+                .on("mouseout", function () { d3.select(this).attr("stroke", null); })
+                .on("click", (event, d) => focus !== d && (zoom(event, d), event.stopPropagation()));
+            //
+            const label = svg.append("g")
+                .style("font", "15px sans-serif")
+                .style("fill", "#360b0f")
+                .style("font-weight", "bold")
+                //  .attr("font-family","Peachy Mochi")
+                .attr("pointer-events", "none")
+                .attr("text-anchor", "middle")
+                .selectAll("text")
+                .data(root.descendants())
+                .join("text")
+                .style("fill-opacity", d => d.parent === root ? 1 : 0)
+                .style("display", d => d.parent === root ? "inline" : "none")
+                .text(d => d.data.name);
+            zoomTo([root.x, root.y, root.r * 2]);
+
+            function stringToColour(str, d) {
+                var hash = 0;
+                for (var i = 0; i < str.length; i++) {
+                    hash = str.toUpperCase().charCodeAt(i) + ((hash << 5) - hash);
+                }
+                var colour = '#';
+                for (var i = 0; i < 3; i++) {
+                    var value = (hash >> (i * 18)) & 0xFF;
+                    colour += ('00' + value.toString(16)).substr(-2);
+                }
+                return colour;
+            }
+
+            function zoomTo(v) {
+                const k = width / v[2];
+
+                view = v;
+
+                //                  label.attr("transform", d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`);
+                label.attr("transform", d => `translate(${(d.x - v[0]) * k},${((d.y - v[1]) * k)})`);
+                node.attr("transform", d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`);
+                node.attr("r", d => d.r * k);
+            }
+
+            function zoom(event, d) {
+                const focus0 = focus;
+
+                focus = d;
+
+                const transition = svg.transition()
+                    .duration(event.altKey ? 7500 : 750)
+                    .tween("zoom", d => {
+                        const i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2]);
+                        return t => zoomTo(i(t));
+                    });
+
+                label
+                    .filter(function (d) { return d.parent === focus || this.style.display === "inline"; })
+                    .transition(transition)
+                    .style("fill-opacity", d => d.parent === focus ? 1 : 0)
+                    .on("start", function (d) { if (d.parent === focus) this.style.display = "inline"; })
+                    .on("end", function (d) { if (d.parent !== focus) this.style.display = "none"; });
+            }
+            return svg.node();
+        });
+
+        svg.then(function (node) {
+            body.append(() => node);
+        });
+    </script>
+    <footer>
+        <p class="text-light">This work was done by Elisabeth Bourgeois, Amina Youssef and Audrey Vidal from Specialized
+            Master "Big Data" years 2021-2022.</p>
+    </footer>
+</body>
+
+</html>

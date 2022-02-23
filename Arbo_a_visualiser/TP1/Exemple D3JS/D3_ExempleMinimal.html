@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body { color: red;}
+	</style>
+
+	<script src="http://d3js.org/d3.v3.min.js"></script> <!-- NECESSAIRE POUR ACCEDER AU NAMESPACE DE D3 -->
+
+	<meta charset="utf-8">
+
+	<title>EXEMPLE MINIMAL D3</title>
+</head>
+<body> 
+ 
+	<h1>Exemple Minimal D3</h1>
+ 
+<!-- LE SCRIPT SUIVANT CHANGE LA COULEUR DE FOND DU CORPS DE LA PAGE AINSI QUE LA COULEUR DES ELEMENTS DE TYPE H1
+-->
+	<script>
+		d3.select("body").style("background-color", "black");
+		d3.select("h1").style("color", "blue");
+	</script>
+ 
+	<noscript>Vous devez activer JavaScript sur votre lecteur</noscript>
+</body>
+</html>

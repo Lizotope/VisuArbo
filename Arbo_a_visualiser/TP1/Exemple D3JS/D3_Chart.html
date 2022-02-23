@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body { color: black;}
+		.MaClasseCSS div {
+			font: 10px sans-serif;
+			background-color: steelblue;
+			text-align: right;
+			padding: 3px;
+			margin: 1px;
+			color: white;
+			}
+	</style>
+
+	<script src="http://d3js.org/d3.v3.min.js"></script> <!-- NECESSAIRE POUR ACCEDER AU NAMESPACE DE D3 -->
+
+	<meta charset="utf-8">
+
+	<title>TITRE NON PRECISE</title>
+</head>
+<body> 
+ 
+	<h1>Création d'une table en D3</h1>
+	<ul> illustre la modification d'un style </ul>
+	<ul> illustre la création de noeuds </ul>
+
+	<div class="MaClasseCSS"></div>
+ 
+	<script>
+		var data = [3, 1, 4, 9, 2];
+
+		d3.select(".MaClasseCSS")
+			.selectAll("div")
+			.data(data)
+			.enter().append("div")
+			.style("width", function(d) { return d * 10 + "px"; })
+			.text(function(d) { return d; });
+
+	</script>
+ 
+	<noscript>Vous devez activer JavaScript sur votre lecteur</noscript>
+</body>
+</html>

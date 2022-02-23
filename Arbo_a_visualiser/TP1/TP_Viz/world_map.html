@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+ <meta charset="utf-8"/>
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, height = device-height" />   
+
+	<link rel="stylesheet" href="./css/happiness.css"/>
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<title>Happiness World Score</title>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Yanone+Kaffeesatz|Valera+Round:200" rel="stylesheet">
+	<script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	 
+	
+	<style>
+	svg rect {
+		 fill: #003366;   /* map background colour */
+	}
+	.country{
+	  fill: #d0d0d0;   /* country colour */
+	  stroke: #2A2C39; /* country border colour */
+	  stroke-width: 1; /* country border width */
+	}
+	.country-on{
+	  fill: #4B5358;   /* highlight colour for selected country */
+	}
+	.countryLabel{
+	  display: none;   /* hide all country labels by default */
+	}
+	.countryName{
+	  fill: #000000;   /* country label text colour */
+	}
+	.countryLabelBg{
+	  fill: rgba(255, 255, 255, .0);;   /* country label background colour */
+	}
+	.map{
+		float:center;
+		text-align:center;	
+		width:730px;
+		height:480px;
+	}
+	
+     
+		
+	</style>
+
+</head>
+<body class="bg" style="margin-left: 2%; margin-right: 2%;">
+<header class="navbar navbar-expand-md navbar-dark bg-black">
+            <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main Navigation">
+                <a class="navbar-brand" style="font-size:50px; color:lightpink; font-family:'Peachy Mochi'; text-shadow: 1px 1px 2px rgb(241, 166, 166), 0 0 1em blue, 0 0 0.2em blue;" href="/">[ Wellness in the world ! ]</a>
+            </nav>
+        </header>	
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link text-light" aria-current="page" href="Parameters.html">Happiness parameters</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="world_map.html">World Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" aria-current="page" href="LinesGraph.html">Line chart representation of the score's evolution</a>
+            </li>
+        </ul>
+<header>
+<h3 class="text-light">Happiness Score world map</h3>
+
+</header>
+
+
+<main>
+<section class="main">
+	<nav>
+		
+	
+		<div class="radios text-light">
+			<input type="radio" name="year" value="http://localhost:8000/data/2015.csv" onclick="loadTableau(value)"  checked> 2015<br>
+			<input type="radio" name="year" value="http://localhost:8000/data/2016.csv" onclick="loadTableau(value)"> 2016<br>
+			<input type="radio" name="year" value="http://localhost:8000/data/2017.csv" onclick="loadTableau(value)"> 2017<br>
+			<input type="radio" name="year" value="http://localhost:8000/data/2018.csv" onclick="loadTableau(value)"> 2018<br>
+			<input type="radio" name="year" value="http://localhost:8000/data/2019.csv" onclick="loadTableau(value)"> 2019<br>
+			<input type="radio" name="year" value="http://localhost:8000/data/2020.csv" onclick="loadTableau(value)"> 2020<br>
+		</div>		
+		 
+	</nav>
+	
+	<article class="text-light">
+		<section class="content">
+		<figure>
+				<figcaption>Happiness through the world with raw scores</figcaption>
+				<div  class="map" id="map_raw" ></div>
+		</figure>
+		<div class="texte">
+		<p>This map represents the raw happiness score by country. The greener countries are the highest score they get, countries turn more red as their score decreases.<br/>
+		You can pick the year you want to watch in the radio box on the side of the map.
+		It can be noticed that countries'happiness score is reltively stable through year : northern countries are the happiest as african people feel less priviledged.<br/>
+		We can also see that few citizens feel particularely unhappy : there is not much red color but there is a lot of green. 
+		The less happy countries are in yellow or light orange, showing that thses countries are rather in the middle of the color scale.<br/></p>
+		</div>
+			
+		
+		</section>
+		<div class="legend" id="legend"><br/><br/></div>
+		<section class="content">
+		<figure>
+				<figcaption>Happiness through the world with enhanced differences</figcaption>
+				<div  class="map" id="map_enhanced" ></div>
+		</figure>
+		<div class="texte">
+		<p>In order to enhance differences between countries, the default colors have been spread through the color ladder.<br/><br/>
+		 On this representation, one cannot see the relative homogenity between countries any more as well, but we can more easily identify in which countries people feel the happiest or the less happy.
+		 
+		 </p>	
+		</div>		 
+			
+		</section>
+	</article>
+</section>
+
+<section class="comment">
+	<h2 class="text-warning"> Details </h2>
+	<table>
+		<caption>Tableau de MacKinley</caption>
+		<thead>
+			<th colspan=1 > Variable </th>
+			<th colspan=1 > Type </th>
+			<th colspan=2 > Display </th>
+		</thead>
+		<tbody>
+		<tr>
+			<td>Country</td>
+			<td>Nominal</td>
+			<td>Geography (shape + position)
+		</tr>
+		<tr>
+			<td>Happiness Score</td>
+			<td>Numerical</td>
+			<td>linear color scale
+		</tr>
+			
+		</tbody>
+	</table>
+	<p class="text-light">
+	Scale color has been chosen in way that colors stands for themselves : red is a common code for something going wrong or a danger. At the opposite, green commonly means that things are OK.
+	We used a linear scale color for both maps. Another way would have been to class countries in categories (ordinale variable type) and chose a color for each category. It would have been easier then to identify countries with a common happiness pattern.
+	We found that to keep the linear, continuous scale was more appropriate to data. 
+	</p>
+</section>
+</main>
+<footer>
+<p class="text-light">This work was done by Elisabeth Bourgeois, Amina Youssef and Audrey Vidal from Specialized Master "Big Data" years 2021-2022.</p>
+</footer>
+
+<script type="text/javascript">
+    var tableau=new Object();//array that contains happiness data
+	var max=0; //default values for max happiness score 
+	var min=10;//default value for min happiness score
+	const no_data_color="#797A7E";
+	
+	//the legend object
+	const svg_legend = d3
+			.select("#legend")
+			.append("svg")
+			.attr("width", 900)
+			.attr("height", 50)
+			.attr("y", 0);
+	
+	//for radio button selection and data update
+	d3.select("#year").on("change",loadTableau);
+	loadTableau("http://localhost:8000/data/2015.csv");
+	
+	
+	
+	
+	
+	  
+	
+
+     //LOADS DATA FROM CSV FILES 
+	function loadTableau(filename){		
+		 d3.csv(filename, function( Erreur, csv) {		               
+
+							var res=new Object();
+
+							csv.forEach(function(x) {								
+								var country = x.Country;								
+								var score = x.Happiness_Score;
+								res[country]=score;
+								if(score > max){
+									max=score;									
+								}
+								if(score < min){
+									min=score;									
+								}								
+							});// FIN DE CSV.FOREACH
+						
+						tableau=res;
+						console.log("csv file is has been read");								
+		   });//FIN de d3.csv
+		   
+		   update();// draws the maps
+	   }//fin de loadtableau
+
+		//sometimes, countries have different names between the geo and happiness sets
+	var countryHash=new Object();
+	countryHash["Czech Rep."]="Czech Republic";
+	countryHash["Bosnia and Herz."]="Bosnia and Herzegovina";
+	countryHash["Somaliland"]="Somaliland region";
+	countryHash["Congo"]="Congo (Brazzaville)";
+	countryHash["Central African Rep."]="Central African Republic";
+	countryHash["Dem. Rep. Congo"]="Congo (Kinshasa)";
+	countryHash["Korea"]="South Korea";
+	countryHash["Lao PDR"]="Laos";
+	countryHash["Côte d'Ivoire"]="Ivory Coast";		
+	countryHash["Dem. Rep. Congo"]="Congo (Kinshasa)";
+	countryHash["Dominican Rep."]="Dominican Republic";
+	countryHash["S. Sudan"]="South Sudan";
+
+   
+
+      // ZOOM Functions
+	  //We zoom on both maps at the same time, so it is easier to compare
+      // Define size of map group
+      w = 1500;
+      h = 1250;
+   
+
+     // variables for catching min and max zoom factors
+      var minZoom;
+      var maxZoom; 
+
+      // DEFINE FUNCTIONS/OBJECTS
+      // Define map projection
+      var projection = d3
+        .geoEquirectangular()
+        .center([0, 15]) // set centre to further North as we are cropping more off bottom of map
+        .scale([w / (2 * Math.PI)]) // scale to fit group width
+        .translate([w / 2, h / 2]) // ensure centred in group
+      ;
+
+      // Define map path
+      var path = d3
+        .geoPath()
+        .projection(projection)
+      ;
+	  
+      // Create function to apply zoom to countriesGroup f
+      function zoomed() {
+        t = d3 .event.transform ;
+        countriesGroup_enhanced.attr("transform","translate(" + [t.x, t.y] + ")scale(" + t.k + ")");
+		countriesGroup_raw.attr("transform","translate(" + [t.x, t.y] + ")scale(" + t.k + ")");
+      } 
+	  
+	  // Create function to apply zoom to countriesGroup for raw map
+      function zoomed_raw() {
+        t = d3 .event.transform ;
+        countriesGroup_raw.attr("transform","translate(" + [t.x, t.y] + ")scale(" + t.k + ")");
+		countriesGroup_raw.attr("transform","translate(" + [t.x, t.y] + ")scale(" + t.k + ")");
+      } 
+
+      // Define map zoom behaviour
+      var zoom = d3.zoom() .on("zoom", zoomed) ;
+
+       function getTextBox(selection) {		
+        selection.each(function(d) {			
+            d.bbox = this.getBBox();
+         }) ;
+      }
+
+ 
+
+      // Function that calculates zoom/pan limits and sets zoom to default value
+      function initiateZoom() {
+
+        // Define a "minzoom" whereby the "Countries" is as small possible without leaving white space at top/bottom or sides
+        minZoom = Math.max($("#map_enhanced").width() / w, $("#map_enhanced").height() / h);
+		
+        // set max zoom to a suitable factor of this value
+        maxZoom = 20 * minZoom;
+
+        // set extent of zoom to chosen values
+        // set translate extent so that panning can't cause map to move out of viewport
+        zoom.scaleExtent([minZoom, maxZoom]) .translateExtent([[0, 0], [w, h]]);
+
+         // define X and Y offset for centre of map to be shown in centre of holder        
+		midX = ($("#map_enhanced").width() - minZoom * w) / 2;
+        midY = ($("#map_enhanced").height() - minZoom * h) / 2;
+
+        // change zoom transform to min zoom and centre offsets, 
+        svg_enhanced.call(zoom.transform, d3.zoomIdentity.translate(midX, midY).scale(minZoom));
+		svg_raw.call(zoom.transform, d3.zoomIdentity.translate(midX, midY).scale(minZoom));
+      }
+
+      // zoom to show a bounding box, with optional additional padding as percentage of box size
+      function boxZoom(box, centroid, paddingPerc) {
+
+        minXY = box[0];
+        maxXY = box[1];
+
+        // find size of map area defined
+        zoomWidth = Math.abs(minXY[0] - maxXY[0]);
+        zoomHeight = Math.abs(minXY[1] - maxXY[1]);
+
+        // find midpoint of map area defined
+        zoomMidX = centroid[0];
+        zoomMidY = centroid[1];
+
+        // increase map area to include padding
+        zoomWidth = zoomWidth * (1 + paddingPerc / 100);
+        zoomHeight = zoomHeight * (1 + paddingPerc / 100);
+
+        // find scale required for area to fill svg
+        maxXscale = $("svg").width() / zoomWidth;
+        maxYscale = $("svg").height() / zoomHeight;
+        zoomScale = Math.min(maxXscale, maxYscale);
+
+        // handle some edge cases
+        // limit to max zoom (handles tiny countries)
+        zoomScale = Math.min(zoomScale, maxZoom);
+
+        // limit to min zoom (handles large countries and countries that span the date line)
+        zoomScale = Math.max(zoomScale, minZoom);
+
+        // Find screen pixel equivalent once scaled
+        offsetX = zoomScale * zoomMidX;
+        offsetY = zoomScale * zoomMidY;
+
+        // Find offset to centre, making sure no gap at left or top of holder
+        dleft = Math.min(0, $("svg").width() / 2 - offsetX);
+        dtop = Math.min(0, $("svg").height() / 2 - offsetY);
+
+        // Make sure no gap at bottom or right of holder
+        dleft = Math.max($("svg").width() - w * zoomScale, dleft);
+        dtop = Math.max($("svg").height() - h * zoomScale, dtop);
+
+        // set zoom
+        svg_enhanced
+          .transition()
+          .duration(500)
+          .call(
+            zoom.transform,
+            d3.zoomIdentity.translate(dleft, dtop).scale(zoomScale)
+          );
+		  
+		svg_raw
+          .transition()
+          .duration(500)
+          .call(
+            zoom.transform,
+            d3.zoomIdentity.translate(dleft, dtop).scale(zoomScale)
+          );
+
+      }
+
+      // on window resize, resize both maps
+      $(window).resize(function() {
+        // Resize SVG
+        svg_enhanced
+          .attr("width", $("#map_enhanced").width())
+          .attr("height", $("#map_enhanced").height());
+		  
+		 svg_raw
+          .attr("width", $("#map_raw").width())
+          .attr("height", $("#map_raw").height());
+		  
+        initiateZoom();
+      });
+
+      // create an SVG for the enhanced map
+      var svg_enhanced = d3
+        .select("#map_enhanced")
+        .append("svg")
+        // set to the same size as the "map-holder" div
+        .attr("width", $("#map_enhanced").width())
+        .attr("height", $("#map_enhanced").height())
+        // add zoom functionality
+        .call(zoom)
+
+      ;
+	  
+	   // create an SVG for the raw map
+      var svg_raw = d3
+        .select("#map_raw")
+        .append("svg")
+        // set to the same size as the "map-holder" div
+        .attr("width", $("#map_raw").width())
+        .attr("height", $("#map_raw").height())
+
+        // add zoom functionality
+        .call(zoom)
+
+      ;
+	  
+	  
+	  
+	  // DRAWING THE LEGEND
+	function showLegend(){
+		
+		console.log("showing legend");
+		legend = svg_legend.append("g")
+		  .attr("class", "legend")        
+	 
+		const nodatagap=350;//gap for no data label
+		const rectsize=25; //size of rect to draw legend
+		const legendmargin=200;
+		 //11 is no data, we want it apart from other rects
+		dataset=[0,1,2,3,4,5,6,7,8,9,10,11];
+		legend.selectAll('rect')
+		  .data(dataset)
+		  .enter()
+		  .append("rect")
+		  .attr("y", 0)
+		  .attr("x", function(d, i){ 
+			if(d==11)// no data we want it appart
+				return nodatagap+(i*rectsize);
+			return legendmargin +(i *  rectsize);})
+		  .attr("width", rectsize)
+		  .attr("height", rectsize)
+		  .style("fill", function(d) { 
+		  if(d<=10)
+			return d3.interpolateRdYlGn(d/10);
+			else return no_data_color; //no data
+		  }) 
+		 
+		 //this part draws the legend labels 
+		legend.selectAll('text')
+		  .data(dataset)
+		  .enter()
+		  .append("text")
+		  .style("fill", "lightGrey")
+		  .attr("y", function(d, i){		
+				return 15;}) //center vertically
+		  .attr("x", function(d, i){ 
+			if(d==11) //no data we want it apart
+				return nodatagap+((i+1)*rectsize);
+			else if (d==10)
+				return legendmargin+(rectsize*(i+1));
+			else if(d==0)
+				return 120;
+			else return 0;
+		 })
+		  .text(function(d) {
+			if(d==10) return "the happiest";
+			else if(d==0) return "not happy";
+			else if(d==11) return "no data";
+			return "";
+		  })
+	  }
+	  
+	  
+	  
+	  
+	  //function that expands the happiness score to the max scale
+	  //love the name of the function
+	  function spread_happiness(score){	     
+		return ((score-min)*10/(max-min));		 
+	  }
+		// UPDAT FUNCTIONS/OBJECTS
+		//draws the countries on the map and fills with colors according to country happiness
+		//both map are updated at the same time
+      function update(){
+	  
+		d3.selectAll("rect").selectAll("path").remove();
+		d3.selectAll("g").remove();
+		showLegend();
+		
+		// get map data
+		d3.json(
+			"https://raw.githubusercontent.com/andybarefoot/andybarefoot-www/master/maps/mapdata/custom50.json",
+			function(json) {
+			  //Bind data and create one path per GeoJSON feature
+			  countriesGroup_raw = svg_raw.append("g").attr("id", "map_raw");
+			  
+			  countriesGroup_enhanced = svg_enhanced.append("g").attr("id", "map_enhanced");			  
+			  
+			  // add a background rectangle
+			  countriesGroup_raw
+				.append("rect")
+				.attr("x", 0)
+				.attr("y", 0)
+				.attr("width", w)
+				.attr("height", h); 
+			  countriesGroup_enhanced
+				.append("rect")
+				.attr("x", 0)
+				.attr("y", 0)
+				.attr("width", w)
+				.attr("height", h);   					
+
+			  // draw a path for each feature/country
+			  countries_raw = countriesGroup_raw
+				.selectAll("path")
+				.data(json.features)
+				.enter()
+				.append("path")
+				.attr("d", path)        
+				.style("fill", function(d) {					
+						for (var country in tableau) {						
+							if (d.properties.name==country || countryHash[d.properties.name]==country ){								
+								var color=tableau[country]/10;								
+								return d3.interpolateRdYlGn(color) ;
+							}
+						}						
+						return no_data_color;
+						
+				})				   
+				.attr("id", function(d, i) {
+				  return "country" + d.properties.iso_a3;
+				})
+				.attr("class", "country")   
+				// add a mouseover action to show name label for feature/country
+				.on("mouseover", function(d, i) {
+					d3.select("#countryLabel_raw" + d.properties.iso_a3).style("display", " block");
+				})
+				.on("mouseout", function(d, i) {
+					d3.select("#countryLabel_raw" + d.properties.iso_a3).style("display", "none");
+				})
+				// add an onclick action to zoom into clicked country
+				.on("click", function(d, i) {
+					d3.selectAll(".country").classed("country-on", false);
+					d3.select(this).classed("country-on", true);
+					boxZoom(path.bounds(d), path.centroid(d), 20);
+				});
+			  countries = countriesGroup_enhanced
+				.selectAll("path")
+				.data(json.features)
+				.enter()
+				.append("path")
+				.attr("d", path)        
+				.style("fill", function(d) {					
+						for (var country in tableau) {						
+							if (d.properties.name==country || countryHash[d.properties.name]==country ){								
+								var color=spread_happiness(tableau[country])/10;								
+								return d3.interpolateRdYlGn(color) ;
+							}
+						}
+						
+						return no_data_color;
+						
+				})				   
+				.attr("id", function(d, i) {
+				  return "country" + d.properties.iso_a3;
+				})
+				.attr("class", "country")   
+				// add a mouseover action to show name label for feature/country
+				.on("mouseover", function(d, i) {
+					d3.select("#countryLabel" + d.properties.iso_a3).style("display", " block");
+				})
+				.on("mouseout", function(d, i) {
+					d3.select("#countryLabel" + d.properties.iso_a3).style("display", "none");
+				})
+				// add an onclick action to zoom into clicked country
+				.on("click", function(d, i) {
+					d3.selectAll(".country").classed("country-on", false);
+					d3.select(this).classed("country-on", true);
+					boxZoom(path.bounds(d), path.centroid(d), 20);
+				});	
+								
+
+			  // Add a label group to each feature/country. This will contain the country name and a background rectangle
+			  // Use CSS to have class "countryLabel" initially hidden
+			   countryLabels = countriesGroup_enhanced
+				.selectAll("g")
+				.data(json.features)
+				.enter()
+				.append("g")
+				.attr("class", "countryLabel")
+				.attr("id", function(d) {
+				  return "countryLabel" + d.properties.iso_a3;
+				})
+				.attr("transform", function(d) {
+				  return (
+					"translate(" + path.centroid(d)[0] + "," + path.centroid(d)[1] + ")"
+				  );
+				})
+				// add mouseover functionality to the label
+				.on("mouseover", function(d, i) {					
+					d3.select(this).style("display", "block");
+				})
+				.on("mouseout", function(d, i) {
+					 d3.select(this).style("display", "none");
+			   })
+				// add an onlcick action to zoom into clicked country
+				.on("click", function(d, i) {
+					d3.selectAll(".country").classed("country-on", false);
+					d3.select("#country" + d.properties.iso_a3).classed("country-on", true);
+					boxZoom(path.bounds(d), path.centroid(d), 20);
+				});
+			  countryLabels_raw = countriesGroup_raw
+				.selectAll("g")
+				.data(json.features)
+				.enter()
+				.append("g")
+				.attr("class", "countryLabel")
+				.attr("id", function(d) {
+				  return "countryLabel_raw" + d.properties.iso_a3;
+				})
+				.attr("transform", function(d) {
+				  return (
+					"translate(" + path.centroid(d)[0] + "," + path.centroid(d)[1] + ")"
+				  );
+				})
+				// add mouseover functionality to the label
+				.on("mouseover", function(d, i) {					
+					d3.select(this).style("display", "block");
+					
+				})
+				.on("mouseout", function(d, i) {
+					 d3.select(this).style("display", "none");
+			   })
+				// add an onlcick action to zoom into clicked country
+				.on("click", function(d, i) {
+					d3.selectAll(".country").classed("country-on", false);
+					d3.select("#country" + d.properties.iso_a3).classed("country-on", true);
+					boxZoom(path.bounds(d), path.centroid(d), 20);
+				});
+			
+			  // add the text to the label group showing country name
+			  countryLabels
+				.append("text")
+				.attr("class", "countryName")
+				.style("text-anchor", "middle")
+				.attr("dx", 0)
+				.attr("dy", 0)
+				.text(function(d) {
+				var res=d.properties.name;
+					for (var country in tableau || countryHash[d.properties.name]==country) {
+						
+						if (d.properties.name==country || countryHash[d.properties.name]==country ){
+							res += " "+tableau[country];
+						}
+					}					
+				  return res;
+				})
+				
+				.call(getTextBox);
+		
+			  // add a background rectangle the same size as the text
+				countryLabels_raw
+				.append("text")
+				.attr("class", "countryName")
+				.style("text-anchor", "middle")
+				.attr("dx", 0)
+				.attr("dy", 0)
+				.text(function(d) {
+				var res=d.properties.name;
+					for (var country in tableau || countryHash[d.properties.name]==country) {						
+						if (d.properties.name==country || countryHash[d.properties.name]==country ){
+							res += " "+tableau[country];
+						}
+					}					
+				  return res;
+				})
+				.call(getTextBox);
+
+			  // add a background rectangle the same size as the text
+			  countryLabels_raw
+				.insert("rect", "text")
+				.attr("class", "countryLabelBg")
+				.attr("transform", function(d) {
+				  return "translate(" + (d.bbox.x - 2) + "," + d.bbox.y + ")";
+				})
+				.attr("width", function(d) {
+				  return d.bbox.width + 4;
+				})
+				.attr("height", function(d) {
+				  return d.bbox.height;
+				});
+				
+			
+							  
+			countryLabels
+				.insert("rect", "text")
+				.attr("class", "countryLabelBg")
+				.attr("transform", function(d) {
+				  return "translate(" + (d.bbox.x - 2) + "," + d.bbox.y + ")";
+				})
+				.attr("width", function(d) {
+				  return d.bbox.width + 4;
+				})
+				.attr("height", function(d) {
+				  return d.bbox.height;
+				});
+								
+			 initiateZoom();			                
+
+        } );  //fin fonction jso
+     
+	}//fin update
+	
+	
+	
+
+               
+
+    </script>
+
+
+
+
+
+
+</body>

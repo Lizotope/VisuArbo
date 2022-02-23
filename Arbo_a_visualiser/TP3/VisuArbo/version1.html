@@ -1,0 +1,110 @@
+<html>
+<head>
+    <title>TP 3 : Trees Visualization</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./js/d3.min.js"></script>
+</head>
+
+<body class="bg" style="margin-left: 2%; margin-right: 2%;">
+    <header class="navbar navbar-expand-md navbar-dark bg-black">
+        <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main Navigation">
+            <a class="navbar-brand" style="font-size:50px; color:rgb(150, 230, 103); font-family:'Peachy Mochi'; text-shadow: 1px 1px 2px rgb(109, 228, 98), 0 0 1em blue, 0 0 0.2em blue;" href="/">TP 3 de Visualisation</a>
+        </nav>
+    </header>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">1st Tree</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="version2.html">2nd Tree</a>
+        </li>
+    </ul>
+    <h3 class="card-header text-light">
+        1st Tree
+    </h3>
+        <div id="graph"></div>
+        <script>
+            const body = d3.select('div#graph');
+            function autoBox() 
+            {
+                document.body.appendChild(this);
+                const {x, y, width, height} = this.getBBox();
+                document.body.removeChild(this);
+                return [x, y, width, height];
+            }
+
+            width = 954;
+            radius = width / 2;
+
+            // Modification de la fonction Tree, pour paramétrer la taille et la séparation des noeuds
+            tree = d3.tree()
+                    .size([2 * Math.PI, radius])
+                    .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth);
+
+            // Chargement asynchrone des données
+            datas = d3.json("VisuArbo.json", data => data);
+
+            // quand les données sont prêtes, hiérarchisation des données
+            chart =  datas.then(data => 
+                    {
+                        hierData = d3.hierarchy(data)
+                                        .sort((a, b) => d3.ascending(a.data.name, b.data.name));
+                        const root = tree(hierData);
+                        
+                        const svg = d3.create("svg");
+                        svg.append("g")
+                            .attr("fill", "none")
+                            .attr("stroke", "green")
+                            .attr("stroke-opacity", 0.4)
+                            .attr("stroke-width", 1.8)
+                            .selectAll("path")
+                            .data(root.links())
+                            .join("path")
+                            .attr("d", d3.linkRadial()
+                                .angle(d => d.x)
+                                .radius(d => d.y));
+                        
+                        svg.append("g")
+                            .selectAll("circle")
+                            .data(root.descendants())
+                            .join("circle")
+                            .attr("transform", d => `
+                                rotate(${d.x * 180 / Math.PI - 90})
+                                translate(${d.y},0)
+                            `)
+                            .attr("fill", d => d.children ? "#555" : "#999")
+                            .attr("r", 2.5);
+
+                        svg.append("g")
+                            .attr("font-family", "sans-serif")
+                            .attr("font-size", 10)
+                            .attr("stroke-linejoin", "round")
+                            .attr("stroke-width", 3)
+                            .selectAll("text")
+                            .data(root.descendants())
+                            .join("text")
+                            .attr("transform", d => `
+                                rotate(${d.x * 180 / Math.PI - 90}) 
+                                translate(${d.y},0) 
+                                rotate(${d.x >= Math.PI ? 180 : 0})
+                            `)
+                            .attr("dy", "0.31em")
+                            .attr("x", d => d.x < Math.PI === !d.children ? 6 : -6)
+                            .attr("text-anchor", d => d.x < Math.PI === !d.children ? "start" : "end")
+                            .text(d => d.data.name)
+                            .clone(true).lower()
+                            .attr("stroke", "white");
+
+                        return svg.attr("viewBox", autoBox).node();
+                    }
+            );
+
+            chart.then(function(node){
+                body.append(() => node);
+            });
+        </script>
+        <footer><p class="text-light">Work done by E. Bourgeois, F. Saounde, M. Tallotte - MS Big Data - Feb 2022.</p></footer>               
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script> <!-- NECESSAIRE POUR ACCEDER AU NAMESPACE DE D3 -->
+
+</head>
+
+<body> 
+<meta charset="utf-8">
+
+<title>STYLE EN FONCTION D'UN INDICE</title>
+ 
+<p> paragraphe 1 </p>
+<p> paragraphe 2 </p>
+<p> paragraphe 3 </p>
+<p> paragraphe 4 </p>
+<p> paragraphe 5 </p>
+<p> paragraphe 6 </p>
+<p> paragraphe 7 </p>
+ 
+<!-- LE SCRIPT SUIVANT CHOISI UNE COULEUR AU HASARD POUR CHAQUE PARAGRAPHE
+-->
+ <script>
+d3.selectAll("p").style("color", function() {
+  return "hsl(" + Math.random() * 360 + ",100%,50%)";
+});
+</script>
+ 
+<noscript>VOTRE LECTEUR A DESACTIVE JAVASCRIPT, OU NE LE PERMET PAS.</noscript>
+</body>
+</html>

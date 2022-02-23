@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+ 
+<meta charset="utf-8">
+<title>Exemple JavaScript Minimal</title>
+ 
+<h1> Premier noeud H1</h1>
+<h1> Deuxieme noeud H1</h1>
+<h1> Troisieme noeud H1</h1>
+ 
+<script>
+	document.body.appendChild(document.createTextNode('Texte rajouté par une action JavaScript'));
+ 
+	var TousLesH1 = document.getElementsByTagName('h1'); // TABLEAU DE TOUS LES NOEUDS H1 DU DOCUMENT HTML
+
+	for (var i = 0; i < TousLesH1.length; i++) { // ON PARCOURS LE TABLEAU POUR CHANGER LE STYLE DES ELEMENTS
+		var UnElementH1 = TousLesH1.item(i);
+		UnElementH1.style.setProperty("color", "blue");
+	}
+
+</script>
+ 
+<noscript>Vous devez activer Javascript pour voir cette page</noscript>

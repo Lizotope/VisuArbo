@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: "Peachy Mochi";
+	src: url("../fonts/Peachy\ Mochi.ttf");
+}
+
+
+h2{
+	color:#668c4a;
+	text-align:left;
+}
+main{
+	
+}
+section.main{
+	display:flex;
+	padding :inherit;
+}
+nav{
+	
+	flex:20;
+	margin-right :20;
+	position: relative;
+}
+article{	
+	text-align:left;
+	margin-left: auto;
+    margin-right: auto;
+	flex:80;
+	
+}
+section.content{
+	display:flex;
+	padding :inherit;
+	position: relative;	
+}
+div.texte{
+	padding : 1.2em;
+}
+div.radios{
+	padding : 1.2em;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+figure{
+	
+	text-align:center;	
+	border:thin silver solid;
+	margin-left: auto;
+    margin-right: auto;
+	padding :0.5em;
+	width:750px;
+	height:500px;
+	flex:50;	
+}
+
+table,th,td{
+	margin-left: auto;
+    margin-right: auto;
+	border :1px solid silver;
+	border-collapse:collapse;
+	padding : 1.2em;
+	caption-side:top;
+	margin-bottom:1.5em;
+	
+}
+th{
+	background-color: #212f3c ;
+	font-size:1.1em;
+	color:#FFC107;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+tr{
+	background-color: #979a9a ;
+	font-size:1.0em;
+}
+
+footer{
+	padding-top:1em;
+	text-align:right;
+	font-size :0.9em;
+}
+div.map{
+	float:center;
+	text-align:center;	
+	width:730px;
+	height:450px;
+}
+
+section.comment{
+	padding :inherit;
+	margin-left: auto;
+    margin-right: auto;	
+}
+/* added by liz (18-nov-21:00) */
+.bg {
+	background-image: url('../images/bg.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+

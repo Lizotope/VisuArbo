@@ -1,0 +1,697 @@
+{
+    "name": "Arbo_a_visualiser",
+    "type": "directory",
+    "children": [
+        {
+            "name": "Cours_250120222",
+            "type": "file"
+        },
+        {
+            "name": "notes_TP_whr",
+            "type": "file"
+        },
+        {
+            "name": "TP3",
+            "type": "directory",
+            "children": [
+                {
+                    "name": "VisuArbo.zip",
+                    "type": "file"
+                },
+                {
+                    "name": "folder_to_json_prof.py",
+                    "type": "file"
+                },
+                {
+                    "name": "VisuArbo",
+                    "type": "directory",
+                    "children": [
+                        {
+                            "name": "index.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "favicon.ico",
+                            "type": "file"
+                        },
+                        {
+                            "name": "fonts",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "DinoTopia-Thin.ttf",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "DinoTopia.ttf",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "Peachy Mochi.ttf",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": ".Rhistory",
+                            "type": "file"
+                        },
+                        {
+                            "name": "css",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "bootstrap.min.css",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "bootstrap.min.css.map",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "style.css",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "js",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "bootstrap.bundle.min.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "bootstrap.bundle.min.js.map",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "config.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "d3.min.js",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "version2.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "version1.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "folder_to_json.py",
+                            "type": "file"
+                        },
+                        {
+                            "name": "Arbo_a_visualiser",
+                            "type": "directory",
+                            "children": []
+                        },
+                        {
+                            "name": "images",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "bg.jpg",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "README.md",
+                            "type": "file"
+                        },
+                        {
+                            "name": "VisuArbo.json",
+                            "type": "file"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "TP2",
+            "type": "directory",
+            "children": [
+                {
+                    "name": "0-prez.odp",
+                    "type": "file"
+                },
+                {
+                    "name": "4-sondage-palette2.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "5-ouinon-palette2.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "2-camembert-palette2.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "3-visus-crados-palette2.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "2-camembert-palette1.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "photo-hors-sujet.jpg",
+                    "type": "file"
+                },
+                {
+                    "name": "3-visus-crado-img.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "5-ouinon-palette1.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "5-ouinon-img.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "2-camembert-img.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "4-sondage-palette1.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "1-map-img.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "4-sondage-presid-img.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "1-map-palette2.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "1-map-palette1.jpeg",
+                    "type": "file"
+                },
+                {
+                    "name": "3-visus-crados-palette1.jpeg",
+                    "type": "file"
+                }
+            ]
+        },
+        {
+            "name": "kinley.jpeg",
+            "type": "file"
+        },
+        {
+            "name": "TP1",
+            "type": "directory",
+            "children": [
+                {
+                    "name": "TP_Viz",
+                    "type": "directory",
+                    "children": [
+                        {
+                            "name": "Parameters.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "index.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "fonts",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "DinoTopia-Thin.ttf",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "DinoTopia.ttf",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "Peachy Mochi.ttf",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "LinesGraph.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "css",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "happiness.css",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "bootstrap.min.css",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "bootstrap.min.css.map",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "style.css",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "js",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "bootstrap.bundle.min.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "bootstrap.bundle.min.js.map",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "config.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "d3.min.js",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "assets",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "cursors",
+                                    "type": "directory",
+                                    "children": [
+                                        {
+                                            "name": "grabbing.cur",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "zoom-in.cur",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "grab.cur",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "zoom-out.cur",
+                                            "type": "file"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "translation",
+                                    "type": "directory",
+                                    "children": [
+                                        {
+                                            "name": "es-ES.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "sv-SE.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "ru-RU.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "zh-CN.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "th-TH.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "empty.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "vi-VN.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "ar-SA.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "fr-FR.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "de-DE.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "en.json",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "he-IL.json",
+                                            "type": "file"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "images",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "bg.jpg",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "world_map.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "libs",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "linechart.css",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "d3.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "linechart.css.map",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi-csv-reader.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi-ddfcsv-reader-polyfill.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi.zip",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "linechart.min.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi.css",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "assets",
+                                    "type": "directory",
+                                    "children": [
+                                        {
+                                            "name": "cursors",
+                                            "type": "directory",
+                                            "children": [
+                                                {
+                                                    "name": "grabbing.cur",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "zoom-in.cur",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "grab.cur",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "zoom-out.cur",
+                                                    "type": "file"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "translation",
+                                            "type": "directory",
+                                            "children": [
+                                                {
+                                                    "name": "es-ES.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "sv-SE.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "ru-RU.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "zh-CN.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "th-TH.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "empty.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "vi-VN.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "ar-SA.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "fr-FR.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "de-DE.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "en.json",
+                                                    "type": "file"
+                                                },
+                                                {
+                                                    "name": "he-IL.json",
+                                                    "type": "file"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "vizabi-excel-reader.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "linechart.zip",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "linechart.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi.css.map",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi-ddfcsv-reader.js",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "vizabi.min.js",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "README.md",
+                            "type": "file"
+                        },
+                        {
+                            "name": "data",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "2016.csv",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "2018.csv",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "2015.csv",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "2019.csv",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "2020.csv",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "2017.csv",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "Data1.csv",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "data.json",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "Data2.csv",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Dataset",
+                    "type": "directory",
+                    "children": [
+                        {
+                            "name": "2016.csv",
+                            "type": "file"
+                        },
+                        {
+                            "name": "2018.csv",
+                            "type": "file"
+                        },
+                        {
+                            "name": "2015.csv",
+                            "type": "file"
+                        },
+                        {
+                            "name": "2019.csv",
+                            "type": "file"
+                        },
+                        {
+                            "name": "2020.csv",
+                            "type": "file"
+                        },
+                        {
+                            "name": "2017.csv",
+                            "type": "file"
+                        }
+                    ]
+                },
+                {
+                    "name": "Exemple D3JS",
+                    "type": "directory",
+                    "children": [
+                        {
+                            "name": "MonFichierCSV.csv",
+                            "type": "file"
+                        },
+                        {
+                            "name": "JavaScriptExempleMinimal.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_ChartDecompose.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "MonFichierCSV2.csv",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_CreationDeNoeudsParLesDonnees.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_LectureCSV_Et_CreationNoeud.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_StyleDetermineParUneFonctionEx2.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_Chart.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "simple-cors-http-server.py",
+                            "type": "file"
+                        },
+                        {
+                            "name": "SVG_D3.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_StyleEnFonctionDeDonnees.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_StyleDetermineParUneFonction.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_ExempleMinimal.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_CreationEtMiseAJourDeNoeuds.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "SVG_ExempleEnDur.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "D3_LectureCSV.html",
+                            "type": "file"
+                        },
+                        {
+                            "name": "simple-cors-http-server2.py",
+                            "type": "file"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

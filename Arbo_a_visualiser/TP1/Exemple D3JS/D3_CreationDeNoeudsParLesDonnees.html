@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://d3js.org/d3.v3.min.js"></script> <!-- NECESSAIRE POUR ACCEDER AU NAMESPACE DE D3 -->
+
+	<meta charset="utf-8">
+
+	<title>CREATION DE NOEUDS DIRIGEE PAR LES DONNEES</title>
+</head>
+<body> 
+ 
+	<h1>Exemple de création de noeuds par un script D3</h1>
+ 
+	<script>
+// LE SCRIPT SUIVANT AJOUTE AUTOMATIQUEMENT UN PARAGRAPHE POUR CHAQUE VALEUR DONNEE
+		d3.select("body").selectAll("p")
+			.data([4, 8, 15, 16, 23, 42])
+			.enter().append("p")
+			.text(function(d) { return "la donnee traitee vaut " + d; });
+	</script>
+ 
+	<noscript>Vous devez activer JavaScript sur votre lecteur</noscript>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body { color: black;}
+		.MaClasseCSS div {
+			font: 10px sans-serif;
+			background-color: steelblue;
+			text-align: right;
+			padding: 3px;
+			margin: 1px;
+			color: white;
+			}
+	</style>
+
+	<script src="http://d3js.org/d3.v3.min.js"></script> <!-- NECESSAIRE POUR ACCEDER AU NAMESPACE DE D3 -->
+
+	<meta charset="utf-8">
+
+	<title>CREATION D'UNE TABLE EN D3</title>
+</head>
+<body> 
+ 
+	<h1>Création d'une table en D3</h1>
+	<ul> illustre la modification d'un style </ul>
+	<ul> illustre la création de noeuds </ul>
+	<ul> illustre de mise à l'échelle </ul>
+
+ 	<div class="MaClasseCSS"></div>  <!-- ON DOIT CREER UN NOEUD DIV VIDE AVEC LA BONNE CLASSE POUR QUE LE SCRIPT SUIVANT FONCTIONNE -->
+ 
+	<script>
+		var MesDonnees = [3, 1, 4, 9, 2];
+
+		var MaFonctionDeMiseALEchelle = d3.scale.linear() // MaFonctionDeMiseALEchelle EST UNE FONCTION
+			.domain([0, d3.max(MesDonnees)])          // ON PEUT L'APPELER COMME TOUTES LES FONCTIONS
+			.range([0, 800]);
+
+		var MaSelection = d3.select(".MaClasseCSS"); // ON SELECTIONNE LE NOEUD DIV AVEC NOTRE CLASSE
+		var UneBarre = MaSelection.selectAll("div");
+		var LesBarresDesDonnees = UneBarre.data(MesDonnees); // ON ETABLIE LE LIEN ENTRE NOTRE SELECTION ET LES DONNEES
+		var CreationEffectiveDesBarres = LesBarresDesDonnees.enter().append("div");; // ON CREE EFFECTIVEMENT LES ELEMENTS
+
+		CreationEffectiveDesBarres.style("width", function(d) { return MaFonctionDeMiseALEchelle(d) + "px";});
+		CreationEffectiveDesBarres.text(function(d) { return d;});
+
+
+	</script>
+ 
+	<noscript>Vous devez activer JavaScript sur votre lecteur</noscript>
+</body>
+</html>

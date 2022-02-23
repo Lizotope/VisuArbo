@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Representation of the happiness score's evolution of each country between 2015 and 2021</title>
+    <link href="libs/vizabi.css" rel="stylesheet" type="text/css" >
+    <link href="libs/linechart.css" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css" />-->
+	<link href="./css/happiness.css" rel="stylesheet">
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="libs/d3.js"></script>
+    <script src="libs/vizabi.js"></script>
+    <script src="libs/linechart.js"></script>
+    <script src="libs/vizabi-ddfcsv-reader.js"></script>
+    <script src="libs/vizabi-csv-reader.js"></script>
+    <script src="libs/vizabi-excel-reader.js"></script>
+	<script src="./js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body class="bg" style="margin-left: 2%; margin-right: 2%;">
+        <header class="navbar navbar-expand-md navbar-dark bg-black">
+            <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main Navigation">
+                <a class="navbar-brand" style="font-size:50px; color:lightpink; font-family:'Peachy Mochi'; text-shadow: 1px 1px 2px rgb(241, 166, 166), 0 0 1em blue, 0 0 0.2em blue;" href="/">[ Wellness in the world ! ]</a>
+            </nav>
+        </header>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="Parameters.html">Happiness parameters</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link text-light" aria-current="page" href="world_map.html">World Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="LinesGraph.html">Line chart representation of the score's evolution</a>
+            </li>
+        </ul>
+
+  <div id="placeholder" style="width: 80%; height: 500px;"></div>
+	
+
+    <script src="./js/config.js"></script>
+    <script>
+
+      var ddfcsvReader = new DDFCsvReader.getDDFCsvReaderObject();
+      Vizabi.Reader.extend("ddf", ddfcsvReader);
+      Vizabi.Reader.extend("ext-csv", CsvReader.csvReaderObject);
+      Vizabi.Reader.extend("excel", ExcelReader.excelReaderObject);
+
+      var viz = Vizabi('LineChart', document.getElementById('placeholder'), CONFIG);
+
+    </script>
+
+<h2 class="text-warning">Details</h2>
+<p class="text-light">The goal was to study the evolution over the years, from 2015 to 2021, of the happiness score of each country.
+<br>We chose a dynamic analysis that enables a better representation of this evolution. Colors indicate the region each country belongs to.</br>
+<br>We can see that overall, scores maintain themselves around the same value for each country. But if we look closer we can make the following observations: 
+<p class="text-light" STYLE="padding:0 0 0 20px;">With no surprise, countries with the highest happiness score are those part of Western Europe and North America.</p>
+<p class="text-light" STYLE="padding:0 0 0 20px;">Countries within the Latin America and Caribbean region show a disparity of scores.</p>
+<p class="text-light" STYLE="padding:0 0 0 20px;">Afghanistan's score drops after 2016 and constitutes the lowest score among all countries.</p>
+<p class="text-light" STYLE="padding:0 0 0 20px;">Finland appears to be the country with the happiest population, year after year.</p>
+<p class="text-light" STYLE="padding:0 0 0 20px;">There are a few countries for wich scores aren't available (Qatar, Bhutan, Somalia or Syria).</p>
+</p>
+<br/>
+<p class="text-light">The following table is a desccription of the variables chosen :</p>
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">Variable</th>
+      <th colspan="1">Type/Measuring scale</th>
+      <th colspan="1">Visual variables present</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Region</td>
+      <td>Nominal</td>
+      <td>Color</td>
+    </tr>
+      <td>Country</td>
+      <td>Nominal</td>
+      <td>Position</td>
+  </tr>
+      <td>Happiness score</td>
+      <td>Quantitative</td>
+      <td>Position</td>
+    </tr>
+    </tr>
+      <td>Score's evolution</td>
+      <td>Quantitative</td>
+      <td>Line</td>
+    </tr>
+   
+  </tbody>
+</table>
+<footer>
+            <p class="text-light">This work was done by Elisabeth Bourgeois, Amina Youssef and Audrey Vidal from Specialized Master "Big Data" years 2021-2022.</p>
+        </footer>
+  </body>
+</html>
+  

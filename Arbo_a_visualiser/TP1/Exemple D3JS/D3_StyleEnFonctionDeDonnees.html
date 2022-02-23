@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script> <!-- NECESSAIRE POUR ACCEDER AU NAMESPACE DE D3 -->
+
+</head>
+
+<body> 
+<meta charset="utf-8">
+
+<title>STYLE EN FONCTION DES DONNEES</title>
+ 
+<p> paragraphe 1 </p>
+<p> paragraphe 2 </p>
+<p> paragraphe 3 </p>
+<p> paragraphe 4 </p>
+<p> paragraphe 5 </p>
+<p> paragraphe 6 </p>
+<p> paragraphe 7 </p>
+ 
+<!-- LE SCRIPT SUIVANT CHANGE LA TAILLE DES CARACTERES EN FONCTION D UN TABLEAU DE DONNEES
+-->
+ <script>
+d3.selectAll("p")
+    .data([4, 8, 15, 16, 23, 42])
+    .style("font-size", function(d) { return d + "px"; });
+</script>
+ 
+<noscript>VOTRE LECTEUR A DESACTIVE JAVASCRIPT, OU NE LE PERMET PAS.</noscript>
+</body>
+</html>
